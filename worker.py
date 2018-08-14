@@ -543,6 +543,10 @@ def run(task_id, task_args):
                     '--name={}'.format(ingestion_container_name),
                     # Try the new timeout feature
                     '--stop-timeout={}'.format(execution_time_limit),
+                    # Limit number available CPU
+                    '--cpus={}'.format(dockerconfig.WORKER_MAX_CPU),
+                    # Limit available memory
+                    '--memory={}'.format(dockerconfig.WORKER_MAX_MEMORY),
                     # Don't allow subprocesses to raise privileges
                     '--security-opt=no-new-privileges',
                     # Set the right volume
